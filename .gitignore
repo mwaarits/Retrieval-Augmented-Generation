@@ -1,0 +1,29 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Env & secrets
+.env
+
+# Vector store & data
+chroma_db/
+data/
+
+# macOS
+.DS_Store
+
+# Cache & tools
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Agent working rules 
+ai-rules/
+dev-docs/

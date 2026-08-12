@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAG App</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="login-screen" class="login-screen" hidden>
+    <div class="login-panel">
+      <form id="login-form" class="login-form">
+        <h2>Masuk</h2>
+        <p class="login-sub">Silakan masuk untuk melanjutkan.</p>
+        <input id="login-username" type="text" placeholder="Username" autocomplete="username" required>
+        <input id="login-password" type="password" placeholder="Password" autocomplete="current-password" required>
+        <div id="login-error" class="error-banner" hidden></div>
+        <button type="submit">Masuk</button>
+      </form>
+    </div>
+  </div>
+
+  <header class="app-header">
+    <div class="header-row">
+      <div>
+        <h1>RAG App</h1>
+        <p class="subtitle">Unggah dokumen, lalu ajukan pertanyaan.</p>
+      </div>
+      <button id="logout-btn" type="button" class="logout-btn" hidden>Keluar</button>
+    </div>
+  </header>
+
+  <main class="panels">
+    <section class="panel panel-upload" aria-labelledby="upload-title">
+      <h2 id="upload-title">Upload Dokumen</h2>
+      <div id="dropzone" class="dropzone">
+        <p>Seret &amp; letakkan file di sini, atau</p>
+        <label for="file-input" class="file-label">pilih file</label>
+        <input id="file-input" type="file" multiple accept=".pdf,.txt,.md" hidden>
+        <p class="hint">Format: PDF, TXT, MD · maks 25 MB per file</p>
+      </div>
+      <div id="file-box" class="file-box">
+        <ul id="file-list" class="file-list"></ul>
+      </div>
+      <button id="upload-btn" type="button" disabled>Upload</button>
+    </section>
+
+    <section class="panel panel-chat" aria-labelledby="chat-title">
+      <h2 id="chat-title">Chat RAG</h2>
+      <div id="error-banner" class="error-banner" hidden></div>
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <form id="chat-form" class="chat-form">
+        <input id="question-input" type="text" placeholder="Ketik pertanyaan…" autocomplete="off" required>
+        <button id="send-btn" type="submit">Kirim</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
