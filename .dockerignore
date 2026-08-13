@@ -1,0 +1,32 @@
+# VCS
+.git/
+.gitignore
+
+# Env & secrets
+.env
+.env.example
+
+# Virtual env (dibuat ulang di dalam image dari uv.lock)
+.venv/
+
+# Data & vector store (persist via Azure Files di production)
+chroma_db/
+data/
+
+# Python artifacts
+__pycache__/
+*.py[oc]
+build/
+dist/
+*.egg-info
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Tests & local docs
+tests/
+dev-docs/
+ai-rules/
+
+# macOS
+.DS_Store
