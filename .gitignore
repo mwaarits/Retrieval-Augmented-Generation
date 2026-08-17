@@ -27,3 +27,9 @@ data/
 # Agent working rules 
 ai-rules/
 dev-docs/
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/terraform.tfvars
