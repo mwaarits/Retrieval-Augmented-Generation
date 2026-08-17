@@ -78,11 +78,11 @@ resource "azurerm_container_app" "app" {
       storage_type  = "AzureFile"
       mount_options = "uid=1000,gid=1000,mfsymlinks,nobrl,cache=none,dir_mode=0750,file_mode=0750"
     }
+  }
 
-    registry {
-      server   = "${var.acr_name}.azurecr.io"
-      identity = azurerm_user_assigned_identity.app.id
-    }
+  registry {
+    server   = "${var.acr_name}.azurecr.io"
+    identity = azurerm_user_assigned_identity.app.id
   }
 
   secret {
