@@ -26,6 +26,11 @@ resource "azurerm_container_app" "app" {
   resource_group_name          = var.resource_group_name
   revision_mode                = "Single"
 
+  depends_on = [
+    azurerm_role_assignment.acr_pull,
+    azurerm_role_assignment.kv_secrets_user,
+  ]
+
   ingress {
     external_enabled = true
     target_port      = 8000
@@ -72,6 +77,11 @@ resource "azurerm_container_app" "app" {
       storage_name  = azurerm_container_app_environment_storage.ragdata.name
       storage_type  = "AzureFile"
       mount_options = "uid=1000,gid=1000,mfsymlinks,nobrl,cache=none,dir_mode=0750,file_mode=0750"
+    }
+
+    registry {
+      server   = "${var.acr_name}.azurecr.io"
+      identity = azurerm_user_assigned_identity.app.id
     }
   }
 
