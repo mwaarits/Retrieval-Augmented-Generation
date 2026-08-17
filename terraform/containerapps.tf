@@ -3,8 +3,11 @@ resource "azurerm_container_app_environment" "env" {
   resource_group_name = var.resource_group_name
   location            = var.location
 
-  vnet_infra {
-    subnet_id = azurerm_subnet.infra.id
+  infrastructure_subnet_id = azurerm_subnet.infra.id
+
+  workload_profile {
+    name                  = "Consumption"
+    workload_profile_type = "Consumption"
   }
 }
 
