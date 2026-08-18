@@ -86,13 +86,15 @@ resource "azurerm_container_app" "app" {
   }
 
   secret {
-    name  = "google-api-key"
-    value = "secretref:${data.azurerm_key_vault.kv.vault_uri}secrets/${var.kv_secret_google_api_key}"
+    name                = "google-api-key"
+    key_vault_secret_id = "https://${data.azurerm_key_vault.kv.name}.vault.azure.net/secrets/${var.kv_secret_google_api_key}"
+    identity            = azurerm_user_assigned_identity.app.id
   }
 
   secret {
-    name  = "auth-users"
-    value = "secretref:${data.azurerm_key_vault.kv.vault_uri}secrets/${var.kv_secret_auth_users}"
+    name                = "auth-users"
+    key_vault_secret_id = "https://${data.azurerm_key_vault.kv.name}.vault.azure.net/secrets/${var.kv_secret_auth_users}"
+    identity            = azurerm_user_assigned_identity.app.id
   }
 
   identity {
