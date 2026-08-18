@@ -1,0 +1,30 @@
+# Salin file ini menjadi terraform.tfvars lalu isi nilainya.
+# JANGAN commit terraform.tfvars — file ini berisi rahasia (storage_access_key).
+# Nilai contoh mengikuti setup project ini.
+
+resource_group_name = "RAG"
+location            = "koreacentral"
+
+vnet_name          = "rag-vnet"
+vnet_cidr          = "10.0.0.0/16"
+infra_subnet_name  = "rag-subnet"
+infra_subnet_cidr  = "10.0.0.0/23"
+
+identity_name = "rag-app-identity"
+env_name      = "rag-env"
+app_name      = "rag-app"
+
+image    = "ragapp2304.azurecr.io/rag-app:latest"
+acr_name = "ragapp2304"
+
+key_vault_name = "myrag"
+
+# Nama secret di Key Vault (default sudah cocok dengan kode app)
+# kv_secret_google_api_key = "google-api-key"
+# kv_secret_auth_users     = "auth-users"
+
+storage_account_name = "myrag"
+storage_share_name   = "ragdata"
+
+# Ambil dengan: az storage account keys list -g RAG -n <nama-storage> --query "[0].value" -o tsv
+storage_access_key = "<GANTI-DENGAN-ACCESS-KEY-KEY1>"
